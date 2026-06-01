@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* ============== THEME — "Analog Mission Control" ============== */
+@theme {
+  --color-bg: #08090d;          /* deep space ink */
+  --color-bg-soft: #0e1016;     /* raised surface */
+  --color-panel: #0f1118;       /* instrument panel */
+  --color-line: rgba(236, 231, 221, 0.14);
+  --color-ink: #ece7dd;         /* warm bone (text) */
+  --color-muted: #8b8779;       /* warm gray */
+  --color-accent: #ff5a1f;      /* rocket orange (primary) */
+  --color-accent2: #9aa6bd;     /* cool steel (technical) */
+  --color-accent3: #ffb000;     /* amber (signals / secrets) */
+
+  --font-display: var(--ff-display), "Bricolage Grotesque", sans-serif;
+  --font-body: var(--ff-body), "Familjen Grotesk", system-ui, sans-serif;
+  --font-mono: var(--ff-mono), "Space Mono", ui-monospace, monospace;
+}
+
+/* ============== BASE ============== */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 80% -10%, #1b140c 0%, transparent 50%),
+    radial-gradient(ellipse at 8% 6%, #0b1016 0%, transparent 45%),
+    #08090d;
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+@media (hover: none) { body { cursor: auto; } }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.0; letter-spacing: -0.02em; margin: 0; font-weight: 800; }
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+::selection { background: var(--color-accent); color: #08090d; }
+
+.gradient-text {
+  background: linear-gradient(100deg, var(--color-accent), var(--color-accent3));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ============== BACKDROP ============== */
+/* 3D planet journey canvas sits behind the content */
+.journey-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+/* faint atmospheric glows — warm + cool, very subtle (no neon) */
+.nebula { position: fixed; border-radius: 50%; filter: blur(140px); z-index: -3; pointer-events: none; }
+.nebula-1 { width: 640px; height: 640px; top: -200px; right: -150px; background: radial-gradient(circle, rgba(255,90,31,0.22), transparent 70%); }
+.nebula-2 { width: 560px; height: 560px; top: 45%; left: -180px; background: radial-gradient(circle, rgba(126,138,162,0.16), transparent 70%); }
+.nebula-3 { width: 520px; height: 520px; bottom: -160px; left: 40%; background: radial-gradient(circle, rgba(255,176,0,0.12), transparent 70%); }
+.nebula-4 { width: 600px; height: 600px; bottom: -100px; left: -180px; background: radial-gradient(circle, rgba(50,80,255,0.18), transparent 70%); }
+
+.grid-overlay {
+  position: fixed; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(236,231,221,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236,231,221,0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  z-index: -2;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 78%);
+  mask-image: radial-gradient(ellipse at center, black 25%, transparent 78%);
+}
+/* film grain */
+.grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============== REGISTRATION TICKS (technical panels) ============== */
+.ticks { position: relative; }
+.ticks::before, .ticks::after {
+  content: ""; position: absolute; width: 12px; height: 12px; pointer-events: none;
+}
+.ticks::before { top: 10px; left: 10px; border-top: 1.5px solid var(--color-accent); border-left: 1.5px solid var(--color-accent); }
+.ticks::after { bottom: 10px; right: 10px; border-bottom: 1.5px solid var(--color-accent); border-right: 1.5px solid var(--color-accent); }
+
+/* ============== CUSTOM CURSOR ============== */
+.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; }
+.cursor-dot { width: 6px; height: 6px; background: var(--color-accent); }
+.cursor-ring { width: 30px; height: 30px; border: 1.5px solid var(--color-ink); mix-blend-mode: difference; transition: width .2s, height .2s, background .2s; }
+.cursor-ring.hovering { width: 50px; height: 50px; background: rgba(255,90,31,0.12); border-color: var(--color-accent); }
+
+/* ============== TERMINAL / BOOT ============== */
+.terminal { background: var(--color-panel); border: 1px solid var(--color-line); border-radius: 4px; overflow: hidden; }
+.t-cmd { color: var(--color-accent); } .t-out { color: var(--color-muted); } .t-key { color: var(--color-accent3); } .t-str { color: #a9b3a0; } .t-ok { color: #6fbf73; }
+.blink { animation: blink 1s steps(2) infinite; color: var(--color-accent3); }
+.boot-scanlines { position: absolute; inset: 0; pointer-events: none; opacity: .5; background: repeating-linear-gradient(180deg, rgba(255,90,31,0.05) 0, rgba(255,90,31,0.05) 1px, transparent 2px, transparent 4px); animation: scan 8s linear infinite; }
+
+/* ============== PROFILE / PROJECT VISUALS ============== */
+.profile-photo { position: relative; height: 210px; overflow: hidden; background: radial-gradient(circle at 50% 35%, #1a1c24, #0b0c11); display: flex; align-items: center; justify-content: center; }
+.profile-scan { position: absolute; left: 0; right: 0; height: 44px; background: linear-gradient(180deg, transparent, rgba(255,90,31,0.18), transparent); animation: scanY 3.5s ease-in-out infinite; }
+.project-visual { position: relative; overflow: hidden; }
+.project-visual::after {
+  content: ""; position: absolute; inset: 0; opacity: .4;
+  background-image: radial-gradient(1px 1px at 20% 30%, #ece7dd, transparent), radial-gradient(1px 1px at 70% 60%, #ece7dd, transparent), radial-gradient(1px 1px at 40% 80%, #ece7dd, transparent), radial-gradient(1.5px 1.5px at 85% 25%, #ece7dd, transparent);
+}
+
+/* ============== SECRET COLLECTIBLE ============== */
+.secret { position: absolute; width: 26px; height: 26px; border: none; background: transparent; cursor: pointer; z-index: 30; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; }
+.secret.revealed { opacity: .9; pointer-events: auto; }
+.secret.revealed:hover { transform: scale(1.35); opacity: 1; }
+.secret.collected { pointer-events: none; opacity: 0; transform: scale(2) translateY(-30px); }
+.secret::before { content: "✦"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--color-accent3); font-size: 20px; text-shadow: 0 0 12px var(--color-accent3); animation: secretPulse 1.6s ease-in-out infinite; }
+
+/* ============== KEYFRAMES ============== */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes scan { from { background-position-y: 0; } to { background-position-y: 100px; } }
+@keyframes scanY { 0%,100% { top: -44px; } 50% { top: 210px; } }
+@keyframes secretPulse { 0%,100% { transform: scale(1); opacity: .7; } 50% { transform: scale(1.25); opacity: 1; } }
+@keyframes scrollMove { from { left: -40%; } to { left: 100%; } }
+@keyframes launchFlash { 0% { opacity: 0; } 8% { opacity: 0.35; } 100% { opacity: 0; } }
+@keyframes chevronBounce { 0%,100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(8px); opacity: 1; } }
+@keyframes rocketRise { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-120px); opacity: 0; } }
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-spin-slow { animation: spin 9s linear infinite; }
+.animate-chevron { animation: chevronBounce 1.6s ease-in-out infinite; }
+
+/* ============== SCROLLBAR ============== */
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #08090d; }
+::-webkit-scrollbar-thumb { background: var(--color-accent); border-radius: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}

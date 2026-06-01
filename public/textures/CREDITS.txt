@@ -1,0 +1,12 @@
+PLANET TEXTURE CREDITS
+======================
+
+earth.jpg, earth_clouds.png, earth_normal.jpg, moon.jpg
+  Source: three.js examples (https://github.com/mrdoob/three.js)
+  Imagery derived from NASA. three.js is MIT licensed; NASA imagery is public domain.
+
+jupiter.jpg, saturn.jpg, saturn_ring.png, mercury.jpg, neptune.jpg
+  Source: Solar System Scope (https://www.solarsystemscope.com/textures/)
+  License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+
+Mars is generated procedurally in-engine (no texture file).

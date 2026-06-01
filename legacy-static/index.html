@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Full-Stack Developer — an interactive journey across the web universe." />
+  <title>Sandeep · Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== BOOT TERMINAL INTRO ===== -->
+  <div class="boot" id="boot">
+    <div class="boot-scanlines"></div>
+    <div class="boot-window">
+      <div class="boot-head">
+        <span class="boot-file">mission.sys</span>
+        <span class="boot-ready">READY</span>
+      </div>
+      <pre class="boot-body"><code id="bootText"></code><span class="boot-cursor" id="bootCursor">▋</span></pre>
+      <div class="boot-foot">
+        <span class="boot-hint">[ press any key or click to skip ]</span>
+        <button class="boot-skip" id="bootSkip">SKIP ▸</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SPACE BACKDROP ===== -->
+  <canvas id="starfield"></canvas>
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- ===== TRAVELING ASTRONAUT ===== -->
+  <div class="traveler" id="traveler" aria-hidden="true">
+    <div class="astro-trail"></div>
+    <div class="astro-body">
+      <span class="astro-emoji">🧑‍🚀</span>
+      <span class="astro-glow"></span>
+    </div>
+  </div>
+
+  <!-- ===== SCROLL PROGRESS ===== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="logo">
+      <span class="logo-mark">◈</span>
+      <span class="logo-text">SANDEEP<span class="logo-dot">.</span>DEV</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Stack</a>
+      <a href="#projects">Missions</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow" data-reveal>// TRANSMISSION FROM DEEP SPACE</p>
+      <h1 class="hero-title" data-reveal>
+        <span class="line">FULL-STACK</span>
+        <span class="line gradient-text">DEVELOPER</span>
+      </h1>
+      <p class="hero-sub" data-reveal>
+        Welcome aboard. I build web experiences that travel from the
+        front-end cosmos to the server-side void — clean code, blazing
+        performance, zero gravity. Scroll to begin the journey.
+      </p>
+      <div class="hero-actions" data-reveal>
+        <a href="#projects" class="btn btn-primary">Explore Missions</a>
+        <a href="#contact" class="btn btn-ghost">Open Comms</a>
+      </div>
+      <div class="hero-stats" data-reveal>
+        <div class="stat"><span class="stat-num" data-count="40">0</span><span class="stat-label">Projects Launched</span></div>
+        <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label">Years In Orbit</span></div>
+        <div class="stat"><span class="stat-num" data-count="99">0</span><span class="stat-label">% Uptime</span></div>
+      </div>
+    </div>
+    <div class="planet planet-hero"><div class="planet-ring"></div></div>
+    <!-- hidden collectible -->
+    <button class="secret" data-secret="0" style="top:24%; right:18%" aria-label="Hidden star"></button>
+    <div class="scroll-hint">
+      <span>SCROLL TO TRAVEL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="section-head" data-reveal>
+      <span class="section-index">01</span>
+      <h2 class="section-title">The Pilot</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text" data-reveal>
+        <p class="lead">
+          I'm a full-stack engineer who treats every project like a space
+          mission — meticulous planning, robust systems, and a flawless launch.
+        </p>
+        <p>
+          From crafting pixel-perfect interfaces with React and Next.js to
+          engineering resilient APIs and databases, I build products that scale
+          across galaxies of users. I care about the details no one sees:
+          accessibility, performance budgets, and code future-me will thank me for.
+        </p>
+        <div class="about-tags">
+          <span>Problem Solver</span>
+          <span>Performance Obsessed</span>
+          <span>Open Source</span>
+          <span>UI Craftsman</span>
+        </div>
+      </div>
+
+      <!-- Profile card (slides in, like the reference band card) -->
+      <aside class="profile-card" data-reveal>
+        <div class="profile-photo">
+          <div class="profile-avatar">🧑‍🚀</div>
+          <div class="profile-scan"></div>
+        </div>
+        <div class="profile-info">
+          <span class="profile-role">CMDR · FULL-STACK</span>
+          <h3 class="profile-name">SANDEEP</h3>
+          <p class="profile-bio">Mission lead. Ships front-to-back, keeps the system online when everything else is on fire.</p>
+          <ul class="profile-stats">
+            <li><span>SPECIALTY</span><strong>Web Platform</strong></li>
+            <li><span>STATUS</span><strong class="online">● Online</strong></li>
+            <li><span>BASE</span><strong>Earth, Sector 7</strong></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    <button class="secret" data-secret="1" style="bottom:8%; left:6%" aria-label="Hidden star"></button>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section skills" id="skills">
+    <div class="section-head" data-reveal>
+      <span class="section-index">02</span>
+      <h2 class="section-title">The Arsenal</h2>
+    </div>
+    <div class="skills-grid">
+      <article class="skill-card" data-reveal>
+        <div class="skill-icon">🛰️</div>
+        <h3>Frontend</h3>
+        <p>Interfaces that feel weightless and respond instantly.</p>
+        <ul class="chips"><li>React</li><li>Next.js</li><li>TypeScript</li><li>Tailwind</li><li>Framer Motion</li></ul>
+      </article>
+      <article class="skill-card" data-reveal>
+        <div class="skill-icon">⚙️</div>
+        <h3>Backend</h3>
+        <p>APIs and services built to survive any payload.</p>
+        <ul class="chips"><li>Node.js</li><li>Express</li><li>FastAPI</li><li>Go</li><li>GraphQL</li></ul>
+      </article>
+      <article class="skill-card" data-reveal>
+        <div class="skill-icon">🗄️</div>
+        <h3>Data</h3>
+        <p>Storage layers tuned for speed and scale.</p>
+        <ul class="chips"><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>Prisma</li></ul>
+      </article>
+      <article class="skill-card" data-reveal>
+        <div class="skill-icon">🚀</div>
+        <h3>DevOps</h3>
+        <p>Ship to orbit with confidence and zero downtime.</p>
+        <ul class="chips"><li>Docker</li><li>Vercel</li><li>AWS</li><li>CI/CD</li><li>Git</li></ul>
+      </article>
+    </div>
+    <button class="secret" data-secret="2" style="top:18%; right:4%" aria-label="Hidden star"></button>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section projects" id="projects">
+    <div class="section-head" data-reveal>
+      <span class="section-index">03</span>
+      <h2 class="section-title">Missions</h2>
+    </div>
+    <div class="projects-list">
+      <article class="project" data-reveal>
+        <div class="project-meta">
+          <span class="project-tag">SAAS · FULL-STACK</span>
+          <h3>Nebula Analytics</h3>
+          <p>Real-time analytics dashboard processing millions of events with sub-second queries and live charts.</p>
+          <ul class="chips"><li>Next.js</li><li>TypeScript</li><li>Postgres</li><li>WebSockets</li></ul>
+          <div class="project-links"><a href="#" class="btn-link">Live ↗</a><a href="#" class="btn-link">Code ↗</a></div>
+        </div>
+        <div class="project-visual visual-1"><span class="visual-num">01</span></div>
+      </article>
+
+      <article class="project reverse" data-reveal>
+        <div class="project-meta">
+          <span class="project-tag">E-COMMERCE</span>
+          <h3>Orbit Market</h3>
+          <p>A headless commerce platform with a buttery checkout, Stripe payments, and edge-cached product pages.</p>
+          <ul class="chips"><li>React</li><li>Node.js</li><li>Stripe</li><li>Redis</li></ul>
+          <div class="project-links"><a href="#" class="btn-link">Live ↗</a><a href="#" class="btn-link">Code ↗</a></div>
+        </div>
+        <div class="project-visual visual-2"><span class="visual-num">02</span></div>
+      </article>
+
+      <article class="project" data-reveal>
+        <div class="project-meta">
+          <span class="project-tag">AI · TOOLING</span>
+          <h3>Cosmo AI</h3>
+          <p>An AI assistant that turns plain language into deployable code, streaming responses with the Vercel AI SDK.</p>
+          <ul class="chips"><li>Next.js</li><li>AI SDK</li><li>FastAPI</li><li>Vector DB</li></ul>
+          <div class="project-links"><a href="#" class="btn-link">Live ↗</a><a href="#" class="btn-link">Code ↗</a></div>
+        </div>
+        <div class="project-visual visual-3"><span class="visual-num">03</span></div>
+      </article>
+    </div>
+    <button class="secret" data-secret="3" style="top:46%; left:2%" aria-label="Hidden star"></button>
+  </section>
+
+  <!-- ===== JOURNEY ===== -->
+  <section class="section journey" id="journey">
+    <div class="section-head" data-reveal>
+      <span class="section-index">04</span>
+      <h2 class="section-title">Flight Log</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item" data-reveal>
+        <div class="tl-dot"></div>
+        <span class="tl-year">2024 — NOW</span>
+        <h3>Senior Full-Stack Engineer</h3>
+        <p>Leading product engineering, mentoring crew, and architecting scalable systems end to end.</p>
+      </div>
+      <div class="tl-item" data-reveal>
+        <div class="tl-dot"></div>
+        <span class="tl-year">2022 — 2024</span>
+        <h3>Full-Stack Developer</h3>
+        <p>Built and shipped customer-facing features across the stack for a fast-growing startup.</p>
+      </div>
+      <div class="tl-item" data-reveal>
+        <div class="tl-dot"></div>
+        <span class="tl-year">2020 — 2022</span>
+        <h3>Frontend Engineer</h3>
+        <p>Crafted polished interfaces and design systems, obsessing over performance and UX.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact">
+    <div class="contact-card" data-reveal>
+      <p class="hero-eyebrow">// ESTABLISH CONNECTION</p>
+      <h2 class="contact-title">Let's build something <span class="gradient-text">stellar</span>.</h2>
+      <p class="contact-sub">Have a mission in mind? Send a transmission and I'll respond at light speed.</p>
+      <form class="contact-form" id="contactForm">
+        <div class="field"><input type="text" id="name" required placeholder=" " /><label for="name">Your name</label></div>
+        <div class="field"><input type="email" id="email" required placeholder=" " /><label for="email">Email address</label></div>
+        <div class="field"><textarea id="message" rows="4" required placeholder=" "></textarea><label for="message">Your message</label></div>
+        <button type="submit" class="btn btn-primary btn-full">Send Transmission 🚀</button>
+        <p class="form-note" id="formNote"></p>
+      </form>
+      <div class="socials">
+        <a href="#" aria-label="GitHub">GitHub</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="Twitter">X / Twitter</a>
+        <a href="mailto:sandysandeepkur05@gmail.com" aria-label="Email">Email</a>
+      </div>
+    </div>
+    <button class="secret" data-secret="4" style="top:12%; left:8%" aria-label="Hidden star"></button>
+  </section>
+
+  <footer class="footer">
+    <p>Built among the stars · © <span id="year"></span> Sandeep</p>
+    <p class="footer-easter">// commander's eyes activated — view source, fellow traveler</p>
+  </footer>
+
+  <!-- ===== GAME HUD ===== -->
+  <div class="hud" id="hud">
+    <button class="hud-btn" id="soundBtn"><span class="hud-ico">♪</span> SOUND <span class="hud-state" id="soundState">OFF</span></button>
+    <button class="hud-btn" id="hintBtn"><span class="hud-ico">◉</span> HINTS</button>
+    <div class="hud-secrets">
+      <span class="hud-ico">★</span> Secrets <strong id="secretCount">0</strong>/5
+      <span class="hud-secret-label">— explore the galaxy</span>
+    </div>
+  </div>
+
+  <!-- toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
