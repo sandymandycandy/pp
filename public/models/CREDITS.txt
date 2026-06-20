@@ -1,0 +1,6 @@
+ROCKET MODEL CREDITS
+====================
+
+space-rocket.glb  —  "Space rocket" by Hennadiy Kyseliov
+  Source : https://poly.pizza/m/8GOlSAMYKEc
+  License: CC BY 3.0 (Creative Commons Attribution)

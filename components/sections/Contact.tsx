@@ -46,7 +46,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative mx-auto flex max-w-[1180px] justify-center px-5 py-[clamp(80px,12vh,140px)] sm:px-10">
+    <section id="contact" className="relative mx-auto flex max-w-[1180px] justify-center px-5 py-[clamp(80px,12vh,140px)] sm:px-10 md:justify-end">
       <Reveal className="w-full max-w-[680px]">
         <div className="ticks rounded border border-line bg-panel p-[clamp(32px,6vw,60px)] text-center">
           <p className="font-mono text-[0.72rem] uppercase tracking-[0.22em] text-accent2">// Establish Connection</p>

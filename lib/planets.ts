@@ -30,46 +30,48 @@ export const GAP = 22;
  *   Left  planets → rocket lands on RIGHT face (cfg.x + cfg.radius + pad)
  */
 export const planets: PlanetCfg[] = [
-  // [0] HERO — Earth: RIGHT side, large, rocket launches & boards here
+  // Most planets LOOM large & close (big curve fills the section's open side).
+  // Saturn is the exception — kept fully framed so its rings read clearly.
+  // [0] HERO — Earth: RIGHT side, rocket launches & boards here
   {
     name: "Earth", kind: "real",
     map: "/textures/earth.jpg",
     clouds: "/textures/earth_clouds.png",
     normal: "/textures/earth_normal.jpg",
-    radius: 5.0, x: 5.5, z: 2, atmo: "#5aa9ff", atmoColor: "#3a88ff",
+    radius: 7.2, x: 8.4, z: -1, atmo: "#5aa9ff", atmoColor: "#3a88ff",
     spin: 0.018, yOff: 0,
   },
   // [1] ABOUT — Mars: LEFT side, warm rusty red
   {
     name: "Mars", kind: "rocky",
-    radius: 3.6, x: -5.0, z: 2, atmo: "#ff7a3c", atmoColor: "#ff5500",
+    radius: 5.2, x: -7.2, z: -1, atmo: "#ff7a3c", atmoColor: "#ff5500",
     dark: "#5a2417", light: "#cc6e3c", spin: 0.032, yOff: 0,
   },
   // [2] SKILLS — Jupiter: RIGHT side, massive gas giant
   {
     name: "Jupiter", kind: "real",
     map: "/textures/jupiter.jpg",
-    radius: 6.2, x: 6.0, z: 0, atmo: "#d9a06b", atmoColor: "#e8a050",
+    radius: 7.2, x: 8.6, z: -1, atmo: "#d9a06b", atmoColor: "#e8a050",
     spin: 0.038, yOff: 0,
   },
   // [3] PROJECTS — Aurora: LEFT side, vivid teal gas giant
   {
     name: "Aurora", kind: "gas",
-    radius: 4.0, x: -5.5, z: 2, atmo: "#36e0c8", atmoColor: "#00ffcc",
+    radius: 5.6, x: -7.4, z: -1, atmo: "#36e0c8", atmoColor: "#00ffcc",
     dark: "#0f3f39", light: "#62f0d8", bands: 12, spin: 0.042, yOff: 0,
   },
-  // [4] JOURNEY — Saturn: RIGHT side, rings tilted for drama
+  // [4] JOURNEY — Saturn: RIGHT side, FULLY FRAMED so the rings show
   {
     name: "Saturn", kind: "real",
     map: "/textures/saturn.jpg", ring: "/textures/saturn_ring.png",
-    radius: 4.5, x: 5.8, z: 1, atmo: "#e9c98a", atmoColor: "#d4a030",
+    radius: 2.8, x: 5.6, z: -4, atmo: "#e9c98a", atmoColor: "#d4a030",
     spin: 0.026, yOff: 0,
   },
-  // [5] CONTACT — Neptune: LEFT side, deep cool blue, final stop
+  // [5] CONTACT — Neptune: LEFT side, deep cool blue, dramatic finale
   {
     name: "Neptune", kind: "real",
     map: "/textures/neptune.jpg",
-    radius: 4.8, x: -5.8, z: 2, atmo: "#4a6bff", atmoColor: "#2244ff",
+    radius: 7.0, x: -7.6, z: -1, atmo: "#4a6bff", atmoColor: "#2244ff",
     spin: 0.030, yOff: 0,
   },
 ];
